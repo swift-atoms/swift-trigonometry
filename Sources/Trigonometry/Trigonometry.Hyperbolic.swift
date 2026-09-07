@@ -1,5 +1,5 @@
 extension Trigonometry {
-    /// The real hyperbolic functions. Numerical backends document their accuracy.
+
     public protocol Hyperbolic: FloatingPoint {
         static func sinh(_ x: Self) -> Self
         static func cosh(_ x: Self) -> Self

@@ -1,5 +1,5 @@
 extension Trigonometry {
-    /// The real circular functions. Numerical backends document their accuracy.
+
     public protocol Circular: FloatingPoint {
         static func sin(_ x: Self) -> Self
         static func cos(_ x: Self) -> Self
