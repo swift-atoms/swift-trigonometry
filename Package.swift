@@ -12,14 +12,14 @@ let package = Package(
     dependencies: [],
     targets: [
         .target(name: "Trigonometry", dependencies: [], path: "Sources/Trigonometry"),
-        .target(name: "Trigonometry Foundation Integration", dependencies: ["Trigonometry"], path: "Sources/Trigonometry Foundation Integration"),
-        .target(name: "Trigonometry Test Support", dependencies: ["Trigonometry"], path: "Tests/Support"),
-        .testTarget(name: "Trigonometry Tests", dependencies: ["Trigonometry", "Trigonometry Foundation Integration", "Trigonometry Test Support"], path: "Tests/Trigonometry Tests"),
+        .target(name: "Trigonometry Foundation Integration", dependencies: [.target(name: "Trigonometry")], path: "Sources/Trigonometry Foundation Integration"),
+        .target(name: "Trigonometry Test Support", dependencies: [.target(name: "Trigonometry")], path: "Tests/Support"),
+        .testTarget(name: "Trigonometry Tests", dependencies: [.target(name: "Trigonometry"), .target(name: "Trigonometry Test Support")], path: "Tests/Trigonometry Tests"),
     ],
     swiftLanguageModes: [.v6]
 )
 
-for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
+for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
     target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
