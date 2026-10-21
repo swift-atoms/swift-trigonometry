@@ -1,5 +1,5 @@
-import Trigonometry
 import Testing
+import Trigonometry
 
 @Suite struct `Reference trigonometry obeys the scalar contract` {
     @Test func `Circular functions use radians and principal inverse values`() {
